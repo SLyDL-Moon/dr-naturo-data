@@ -1,0 +1,55 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Produits Affiliés Amazon - Dr Naturo",
+    "description": "Endpoint statique renvoyant la liste des produits affiliés au format JSON.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://raw.githubusercontent.com/SLyDL-Moon/dr-naturo-data/main"
+    }
+  ],
+  "paths": {
+    "/products.json": {
+      "get": {
+        "summary": "Obtenir la liste des produits affiliés",
+        "operationId": "getAffiliateProducts",
+        "responses": {
+          "200": {
+            "description": "Liste de produits",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "products": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "theme": { "type": "string" },
+                          "form": { "type": "string" },
+                          "price": { "type": "number" },
+                          "rating": { "type": "number" },
+                          "reviews": { "type": "integer" },
+                          "vegan": { "type": "boolean" },
+                          "bio": { "type": "boolean" },
+                          "affiliate_link": { "type": "string" },
+                          "bienfait": { "type": "string" }
+                        },
+                        "required": ["id", "name", "affiliate_link"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
